@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'ionicParseApp.controllers' is found in controllers.js
 angular.module('ionicParseApp',
-        [ 'ionic', 'ionicParseApp.controllers', 'ionicParseApp.services', 'rzModule']
+        [ 'ionic', 'ionicParseApp.controllers', 'ionicParseApp.services', 'rzModule', 'ionic-material']
     )
     .config(function($sceDelegateProvider, $stateProvider, $urlRouterProvider) {
         $sceDelegateProvider.resourceUrlWhitelist([

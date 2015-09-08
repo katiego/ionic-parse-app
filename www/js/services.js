@@ -11,7 +11,7 @@ angular.module('ionicParseApp.services', [])
     author: 'Author',
     description: 'testing description',
     tags: [],
-    time: '26:57'
+    time: 27
   }, {
    id: 0,
    title: 'Points Yoga Nidra',
@@ -19,7 +19,7 @@ angular.module('ionicParseApp.services', [])
    author: 'Author',
    description: 'testing description',
    tags: [],
-   time: '17:20' 
+   time: 17 
   }, {
    id: 0,
    title: 'Traditional Ten Minute Nidra',
@@ -27,7 +27,7 @@ angular.module('ionicParseApp.services', [])
    author: 'Author',
    description: 'testing description',
    tags: [],
-   time: '11:06' 
+   time: 11 
   }];
 
   return {
@@ -43,4 +43,20 @@ angular.module('ionicParseApp.services', [])
       return null;
     }
   };
+})
+
+
+.filter('rangeFilter', function() {
+    return function( items, rangeInfo ) {
+        var filtered = [];
+        var min = parseInt(rangeInfo.userMin);
+        var max = parseInt(rangeInfo.userMax);
+        // If time is with the range
+        angular.forEach(items, function(item) {
+            if( item.time >= min && item.time <= max ) {
+                filtered.push(item);
+            }
+        });
+        return filtered;
+    };
 });

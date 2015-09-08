@@ -1,21 +1,31 @@
 <ion-view title="All Meditations" right-buttons="rightButtons">
     <ion-content has-header="true" has-tabs="true" padding="true" >
+    <br><br>
+    
     <rzslider
-        rz-slider-floor="priceSlider.floor"
-        rz-slider-ceil="priceSlider.ceil"
-        rz-slider-model="priceSlider.min"
-        rz-slider-high="priceSlider.max">
+        rz-slider-floor="0"
+        rz-slider-ceil="30"
+        rz-slider-model="sliderConfig.userMin"
+        rz-slider-high="sliderConfig.userMax">
     </rzslider>
-        
 
-        <div ng-repeat="meditation in meditations">
+
+
+        <div ng-repeat="meditation in meditations | rangeFilter:sliderConfig">
 
           <div class="card">
             <div class="item item-text-wrap">
-              <h2>{{meditation.title}} </h2>
-              <em>{{meditation.time}}</em> <br>
-                <audio controls data-ng-src="{{meditation.recording}}" ></audio>
-              <button ng-click="saveMeditation(meditation)"></button>  
+              <div class="col">
+                <h2>{{meditation.title}} </h2>  
+                <em>{{meditation.time}} minutes</em>
+                <button ng-show="isLoggedIn" ng-click="saveMeditation(meditation)" class="button button-fab button-outline button-royal icon ion-star ink-dark styleStar"></button>
+              </div>
+              <div class="col">
+                
+              </div>
+
+                <audio controls data-ng-src="{{meditation.recording}}" class="audio"></audio>
+               
             </div>
 
           </div>

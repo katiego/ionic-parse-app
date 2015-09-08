@@ -40,48 +40,46 @@ angular.module('ionicParseApp.controllers', ['ionicParseApp.services'])
 })
 
 .controller('HomeController', function($scope, $state, $rootScope, Meditations) {
-    var user = $rootScope.user
-    $scope.userMeditations = user._serverData.savedMeditations
-    console.log($scope.userMeditations)
-
-    $scope.meditations = Meditations.all();
-    $scope.saveMeditation = function(meditation) {
-        console.log('meditation: ' + meditation)
-        // $rootScope.user._serverData.savedMeditations.push(meditation);
-        // $rootScope.user.save();
-        // console.log($rootScope.user._serverData)
-
-        var user = Parse.User.current();
-        var savedMeditations = user.get("savedMeditations")
-        console.log('savedMeditations: ' + savedMeditations)
-        var meditation = meditation
-        user.add("savedMeditations", {
-        id: meditation.id,
-        title: meditation.title,
-        recording: meditation.recording,
-        author: meditation.author,
-        description: meditation.description,
-        tags: meditation.tags,
-        time: meditation.time 
-        });
-        user.save();
-        console.log(user)
+    $scope.sliderConfig = {
+        userMin: 1, 
+        userMax: 28
     }
 
+    $scope.meditations = Meditations.all();
 
-    $scope.priceSlider = {
-        min: 100,
-        max: 180,
-        ceil: 500,
-        floor: 0
-    };
-
-    $scope.currencyFormatting = function(value) { return value.toString() + " $" }
 
     if (!$rootScope.isLoggedIn) {
         $state.go('welcome');
 
     }
+    if ($rootScope.isLoggedIn) {
+        var user = $rootScope.user
+        $scope.userMeditations = user._serverData.savedMeditations
+        console.log($scope.userMeditations)
+        $scope.saveMeditation = function(meditation) {
+            console.log('meditation: ' + meditation)
+            // $rootScope.user._serverData.savedMeditations.push(meditation);
+            // $rootScope.user.save();
+            // console.log($rootScope.user._serverData)
+
+            var user = Parse.User.current();
+            var savedMeditations = user.get("savedMeditations")
+            console.log('savedMeditations: ' + savedMeditations)
+            var meditation = meditation
+            user.add("savedMeditations", {
+            id: meditation.id,
+            title: meditation.title,
+            recording: meditation.recording,
+            author: meditation.author,
+            description: meditation.description,
+            tags: meditation.tags,
+            time: meditation.time 
+            });
+            user.save();
+            console.log(user)
+        }
+    }
+
 })
 
 .controller('LoginController', function($scope, $state, $rootScope, $ionicLoading) {

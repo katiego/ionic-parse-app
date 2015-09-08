@@ -1,0 +1,18 @@
+<ion-view title="My Saved Meditations" right-buttons="rightButtons">
+    <ion-content has-header="true" has-tabs="true" padding="true" >
+
+    <div ng-repeat="meditation in userMeditations">
+
+      <div class="card">
+        <div class="item item-text-wrap">
+          <h2>{{meditation.title}} </h2>
+          <em>{{meditation.time}}</em> <br>
+            <audio controls data-ng-src="{{meditation.recording}}" ></audio>
+        </div>
+
+      </div>
+
+    </div>
+
+    </ion-content>
+</ion-view>

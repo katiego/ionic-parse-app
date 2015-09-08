@@ -1,5 +1,13 @@
 <ion-view title="All Meditations" right-buttons="rightButtons">
     <ion-content has-header="true" has-tabs="true" padding="true" >
+    <rzslider
+        rz-slider-floor="priceSlider.floor"
+        rz-slider-ceil="priceSlider.ceil"
+        rz-slider-model="priceSlider.min"
+        rz-slider-high="priceSlider.max">
+    </rzslider>
+        
+
         <div ng-repeat="meditation in meditations">
 
           <div class="card">
@@ -13,7 +21,5 @@
           </div>
 
         </div>
-
-
     </ion-content>
 </ion-view>

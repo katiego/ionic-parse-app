@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'ionicParseApp.controllers' is found in controllers.js
 angular.module('ionicParseApp',
-        [ 'ionic', 'ionicParseApp.controllers', 'ionicParseApp.services']
+        [ 'ionic', 'ionicParseApp.controllers', 'ionicParseApp.services', 'rzModule']
     )
     .config(function($sceDelegateProvider, $stateProvider, $urlRouterProvider) {
         $sceDelegateProvider.resourceUrlWhitelist([
@@ -78,6 +78,15 @@ angular.module('ionicParseApp',
                 views: {
                     'menuContent': {
                         templateUrl: 'templates/nidra.html',
+                        controller: 'HomeController'
+                    }
+                }
+            })
+            .state('app.savedMeditations', {
+                url: '/savedmeditations',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/savedMeditations.html',
                         controller: 'HomeController'
                     }
                 }

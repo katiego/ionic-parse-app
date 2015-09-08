@@ -5,10 +5,15 @@
 // the 2nd parameter is an array of 'requires'
 // 'ionicParseApp.controllers' is found in controllers.js
 angular.module('ionicParseApp',
-        [ 'ionic', 'ionicParseApp.controllers' ]
+        [ 'ionic', 'ionicParseApp.controllers', 'ionicParseApp.services']
     )
-    .config(function($stateProvider, $urlRouterProvider) {
-
+    .config(function($sceDelegateProvider, $stateProvider, $urlRouterProvider) {
+        $sceDelegateProvider.resourceUrlWhitelist([
+          // Allow same origin resource loads.
+          'self',
+          // Allow loading from outer templates domain.
+          'https://s3-us-west-1.amazonaws.com/ionicparseapp-meditations/**'
+        ])
         // Ionic uses AngularUI Router which uses the concept of states
         // Learn more here: https://github.com/angular-ui/ui-router
         // Set up the various states which the app can be in.

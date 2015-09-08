@@ -1,4 +1,4 @@
-angular.module('ionicParseApp.controllers', [])
+angular.module('ionicParseApp.controllers', ['ionicParseApp.services'])
 
 .controller('AppController', function($scope, $state, $rootScope, $ionicHistory, $stateParams) {
     if ($stateParams.clear) {
@@ -30,15 +30,26 @@ angular.module('ionicParseApp.controllers', [])
         $state.go('app.register');
     };
 
+    $scope.skip = function() {
+        $state.go('app.home')
+    }
+
     if ($rootScope.isLoggedIn) {
         $state.go('app.home');
     }
 })
 
-.controller('HomeController', function($scope, $state, $rootScope) {
+.controller('HomeController', function($scope, $state, $rootScope, Meditations) {
+    $scope.meditations = Meditations.all();
+    // $scope.saveMeditation = function(meditation) {
+    //     console.log('meditation: ' + meditation)
+    //     $rootScope.user._serverData.savedMeditations.push(meditation)
+    //     console.log($rootScope.user._serverData)
+    // }
 
     if (!$rootScope.isLoggedIn) {
         $state.go('welcome');
+
     }
 })
 

@@ -72,6 +72,15 @@ angular.module('ionicParseApp',
                         controller: 'RegisterController'
                     }
                 }
+            })
+            .state('app.nidra', {
+                url: '/nidra',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/nidra.html',
+                        controller: 'HomeController'
+                    }
+                }
             });
 
         $urlRouterProvider.otherwise('/welcome');

@@ -61,6 +61,8 @@ angular.module('ionicParseApp.controllers', ['ionicParseApp.services'])
         $scope.userMeditations = user._serverData.savedMeditations
         console.log($scope.userMeditations)
         $scope.saveMeditation = function(meditation) {
+            var user = Parse.User.current();
+            $scope.userMeditations = user._serverData.savedMeditations
             console.log('meditation: ' + meditation)
             // $rootScope.user._serverData.savedMeditations.push(meditation);
             // $rootScope.user.save();
@@ -79,14 +81,12 @@ angular.module('ionicParseApp.controllers', ['ionicParseApp.services'])
             tags: meditation.tags,
             time: meditation.time 
             });
-            user.save(null, {
-                success: function(data) {
-                    $scope.userMeditations = data._serverData.savedMeditations;
-                }
-            });
+            $scope.userMeditations.push(meditation)
+            user.save()
+            
             
             console.log(user)
-        }
+            }
         $scope.removeSavedMeditation = function(meditation) {
                 var user = Parse.User.current();
                 var savedMeditations = user.get("savedMeditations")
@@ -96,6 +96,7 @@ angular.module('ionicParseApp.controllers', ['ionicParseApp.services'])
                 console.log(found)
                 var index = savedMeditations.indexOf(found[0]);
                 savedMeditations.splice(index, 1);
+                $scope.userMeditations = savedMeditations;
                 user.set('savedMeditations', []);
                 for (var i=0; i<savedMeditations.length; i++) {
                     user.add("savedMeditations", {

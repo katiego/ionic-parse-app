@@ -9,7 +9,8 @@
         rz-slider-high="sliderConfig.userMax">
     </rzslider>
     <br><br>
-        <div ng-repeat="meditation in meditations | rangeFilter:sliderConfig">
+     <span class="badge badge-assertive badgeFloat">{{results.length}}</span>
+        <div ng-repeat="meditation in meditations | rangeFilter:sliderConfig as results">
           <div class="card cardpad">
             <div class="item item-text-wrap">
               <div class="col">

@@ -1,5 +1,9 @@
 angular.module('ionicParseApp.controllers', ['ionicParseApp.services'])
 
+.controller('AboutController', function($scope) {
+    console.log("about controller works")
+})
+
 .controller('AppController', function($scope, $state, $rootScope, $ionicHistory, $stateParams) {
     if ($stateParams.clear) {
         $ionicHistory.clearHistory();
@@ -78,7 +82,22 @@ angular.module('ionicParseApp.controllers', ['ionicParseApp.services'])
             user.save();
             console.log(user)
         }
-    }
+        $scope.removeSavedMeditation = function(meditation) {
+            console.log(meditation)
+            var savedMeditations = user.get("savedMeditations");
+            var meditation = meditation;
+            var medtodelete = savedMeditations.find({
+                    success: function(results) {
+                    alert("Successfully retrieved " + results.length);
+                    // Do something with the returned Parse.Object values
+                    for (var i = 0; i < results.length; i++) {
+                      var object = results[i];
+                      alert(object.id);
+                            }
+                        }
+                    })
+        }  
+        }  
 
 })
 

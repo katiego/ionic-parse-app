@@ -1,12 +1,16 @@
 <ion-view title="My Saved Meditations" right-buttons="rightButtons">
     <ion-content has-header="true" has-tabs="true" padding="true" >
-
+    <span class="badge badge-assertive badgeFloat">{{userMeditations.length}}</span>
     <div ng-repeat="meditation in userMeditations">
 
       <div class="card cardpad">
         <div class="item item-text-wrap">
-          <h2>{{meditation.title}} </h2>
+          <h2>{{meditation.title}} </h2> 
           <em>{{meditation.time}}</em> <br>
+
+          <button class="button-clear button-small closebuttonstyle" ng-click="removeSavedMeditation(meditation)">
+            <i class="icon ion-close"></i>
+          </button>
             <audio controls data-ng-src="{{meditation.recording}}" ></audio>
         </div>
 

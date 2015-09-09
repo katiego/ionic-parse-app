@@ -90,6 +90,15 @@ angular.module('ionicParseApp',
                         controller: 'HomeController'
                     }
                 }
+            })
+            .state('app.about', {
+                url: '/about',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/about.html',
+                        controller: 'AboutController'
+                    }
+                }
             });
 
         $urlRouterProvider.otherwise('/welcome');

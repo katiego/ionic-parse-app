@@ -10,15 +10,18 @@
     </rzslider>
     <br><br>
         <div ng-repeat="meditation in meditations | rangeFilter:sliderConfig">
-
           <div class="card cardpad">
             <div class="item item-text-wrap">
               <div class="col">
                 <h2>{{meditation.title}} </h2>  
                 <em>{{meditation.time}} minutes</em>
                 <span ng-show="isLoggedIn">
-                <button ng-click="saveMeditation(meditation)" class="button button-fab button-outline button-royal icon ion-star ink-dark styleStar"></button>
+                <button ng-click="saveMeditation(meditation)" class="button-clear button-small button-icon styleStar">
+                  <i class="icon ion-star royal ink-dark"></i>
+                </button>
+
                 </span>
+
               </div>
               <div class="col">
                 

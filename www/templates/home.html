@@ -17,7 +17,7 @@
                 <em>{{meditation.time}} minutes</em>
                 <span ng-show="isLoggedIn">
                 <button ng-click="saveMeditation(meditation)" class="button-clear button-small button-icon styleStar">
-                  <i class="icon ion-star royal ink-dark"></i>
+                  <i ng-if="savedMeditations.indexOf(meditation)!=-1" class="icon ion-star royal ink-dark"></i>
                 </button>
 
                 </span>

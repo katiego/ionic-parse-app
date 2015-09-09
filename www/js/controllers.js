@@ -43,7 +43,7 @@ angular.module('ionicParseApp.controllers', ['ionicParseApp.services'])
     }
 })
 
-.controller('HomeController', function($scope, $state, $rootScope, Meditations) {
+.controller('HomeController', function($scope, $state, $rootScope, Meditations, $filter) {
     $scope.sliderConfig = {
         userMin: 1, 
         userMax: 28
@@ -79,25 +79,39 @@ angular.module('ionicParseApp.controllers', ['ionicParseApp.services'])
             tags: meditation.tags,
             time: meditation.time 
             });
-            user.save();
+            user.save(null, {
+                success: function(data) {
+                    $scope.userMeditations = data._serverData.savedMeditations;
+                }
+            });
+            
             console.log(user)
         }
         $scope.removeSavedMeditation = function(meditation) {
-            console.log(meditation)
-            var savedMeditations = user.get("savedMeditations");
-            var meditation = meditation;
-            var medtodelete = savedMeditations.find({
-                    success: function(results) {
-                    alert("Successfully retrieved " + results.length);
-                    // Do something with the returned Parse.Object values
-                    for (var i = 0; i < results.length; i++) {
-                      var object = results[i];
-                      alert(object.id);
-                            }
-                        }
-                    })
-        }  
-        }  
+                var user = Parse.User.current();
+                var savedMeditations = user.get("savedMeditations")
+                console.log('savedMeditations: ' + savedMeditations)
+                var meditation = meditation
+                var found = $filter('filter')(savedMeditations, {id: meditation.id})
+                console.log(found)
+                var index = savedMeditations.indexOf(found[0]);
+                savedMeditations.splice(index, 1);
+                user.set('savedMeditations', []);
+                for (var i=0; i<savedMeditations.length; i++) {
+                    user.add("savedMeditations", {
+                    id: savedMeditations[i].id,
+                    title: savedMeditations[i].title,
+                    recording: savedMeditations[i].recording,
+                    author: savedMeditations[i].author,
+                    description: savedMeditations[i].description,
+                    tags: savedMeditations[i].tags,
+                    time: savedMeditations[i].time 
+                    });
+                };
+                user.save();
+                console.log(user)
+        }
+    }
 
 })
 

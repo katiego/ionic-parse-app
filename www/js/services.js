@@ -13,7 +13,7 @@ angular.module('ionicParseApp.services', [])
     tags: [],
     time: 27
   }, {
-   id: 0,
+   id: 1,
    title: 'Points Yoga Nidra',
    recording: 'https://s3-us-west-1.amazonaws.com/ionicparseapp-meditations/PointsYoga.mp3',
    author: 'Author',
@@ -21,7 +21,7 @@ angular.module('ionicParseApp.services', [])
    tags: [],
    time: 17 
   }, {
-   id: 0,
+   id: 2,
    title: 'Traditional Ten Minute Nidra',
    recording: 'https://s3-us-west-1.amazonaws.com/ionicparseapp-meditations/TenMinNidra.mp3',
    author: 'Author',

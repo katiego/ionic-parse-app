@@ -1,21 +1,26 @@
 <ion-view title="...">
     <ion-content has-header="true" has-tabs="true" padding="true" class="gfont welcomeimg">
     	<br><br>
-    	<center><h3>Welcome to Nidra Now, where you can find and listen to Yoga Nidra.</h3></center>
+    	<span class="welcometitle">
+    		<h1>Be Here Nidra</h1>
+    		<em><h5>Yoga Nidra guided meditations that cultivate wholistic well-being and present moment awareness.</h5></em>
+    		
+    	</span>
+    	<br>
     	<div class="row">
     		
 		  <div class="col">
-		  	<button class="button button-block button-calm boxlike" ng-click="login()">
+		  	<button class="button button-block button-calm" ng-click="login()">
 		  	    LOG IN
 		  	</button>
 		  </div>	
 		  <div class="col">
-		  	<button class="button button-block button-calm boxlike" ng-click="signUp()">
+		  	<button class="button button-block button-calm" ng-click="signUp()">
 		  	    SIGN UP
 		  	</button>
 		  </div>
 
 		</div>
-		<center><button ng-click="skip()">Skip this step for now</button></center>
+		<center><button class="button-clear button-positive" ng-click="skip()">Skip this step for now</button></center>
     </ion-content>
 </ion-view>

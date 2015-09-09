@@ -1,10 +1,36 @@
 /* Your app's CSS, go crazy, make it your own */
+#list {
+  width: 170px;
+  margin: 30px auto;
+  font-size: 20px;
+  text-align: center;
+}
+#list ul {
+  margin-top: 30px;
+}
+#list ul li {
+  text-align: left;
+  list-style: disc;
+  margin: 10px 0px;
+}
+
+.cardpad {
+  margin: 20px;
+  margin-top: 30px;
+}
 
 .ionic-logo {
   display: block;
   margin: 15px auto;
   width: 96px;
   height: 96px;
+}
+
+em {
+    font-style: italic;
+}
+.welcometitle {
+  text-align: center;
 }
 
 .boxlike {
@@ -32,7 +58,7 @@ body {
 }
 
 .welcomeimg{
- background: url(https://placehold.it/1000x1000) no-repeat center center fixed; 
+ background: url(http://il4.picdn.net/shutterstock/videos/2499983/thumb/1.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

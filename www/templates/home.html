@@ -1,24 +1,24 @@
 <ion-view title="All Meditations" right-buttons="rightButtons">
     <ion-content has-header="true" has-tabs="true" padding="true" >
     <br><br>
-    
+    <center>Length of Yoga Nidra Meditation</center>
     <rzslider
         rz-slider-floor="0"
         rz-slider-ceil="30"
         rz-slider-model="sliderConfig.userMin"
         rz-slider-high="sliderConfig.userMax">
     </rzslider>
-
-
-
+    <br><br>
         <div ng-repeat="meditation in meditations | rangeFilter:sliderConfig">
 
-          <div class="card">
+          <div class="card cardpad">
             <div class="item item-text-wrap">
               <div class="col">
                 <h2>{{meditation.title}} </h2>  
                 <em>{{meditation.time}} minutes</em>
-                <button ng-show="isLoggedIn" ng-click="saveMeditation(meditation)" class="button button-fab button-outline button-royal icon ion-star ink-dark styleStar"></button>
+                <span ng-show="isLoggedIn">
+                <button ng-click="saveMeditation(meditation)" class="button button-fab button-outline button-royal icon ion-star ink-dark styleStar"></button>
+                </span>
               </div>
               <div class="col">
                 

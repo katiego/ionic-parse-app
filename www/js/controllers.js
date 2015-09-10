@@ -70,7 +70,7 @@ angular.module('ionicParseApp.controllers', ['ionicParseApp.services'])
 
             var user = Parse.User.current();
             var savedMeditations = user.get("savedMeditations")
-            console.log('savedMeditations: ' + savedMeditations)
+            console.log('savedMeditations: ', savedMeditations)
             var meditation = meditation
             user.add("savedMeditations", {
             id: meditation.id,
@@ -83,10 +83,26 @@ angular.module('ionicParseApp.controllers', ['ionicParseApp.services'])
             });
             $scope.userMeditations.push(meditation)
             user.save()
-            
-            
+            $scope.userMeditations = savedMeditations;
+            console.log('userMeditations: ', $scope.userMeditations)
             console.log(user)
+
+            meditation.fav = true;
             }
+
+        $scope.showSaved = function(m) {
+            var showSaved;
+            for (var i=0; i<$scope.userMeditations.length; i++) {
+                if ($scope.userMeditations[i].id === m.id) {
+                    showSaved = true;
+                }
+                else {
+                    showSaved = false;
+                }
+            }
+            return showSaved
+            
+        };
         $scope.removeSavedMeditation = function(meditation) {
                 var user = Parse.User.current();
                 var savedMeditations = user.get("savedMeditations")
@@ -111,6 +127,7 @@ angular.module('ionicParseApp.controllers', ['ionicParseApp.services'])
                 };
                 user.save();
                 console.log(user)
+                meditation.fav = false;
         }
     }
 
